@@ -47,6 +47,7 @@ function onLoad() {
 	socket.on('messaging', function(type, socketid, message) {
 		insertChat(type, socketid, message);
 	});
+	document.getElementsByClassName('d-none d-md-block').item(0).remove();
 }
 
 function updateDeviceList() {
@@ -89,7 +90,7 @@ function selectDevice(deviceId) {
 	socket.emit('device_listen', deviceId, 'web');
 	selectedDeviceId = deviceId;
 	document.getElementById('selDeviceList').style.display = 'none';
-	document.getElementById('divMessages').style.display = 'block';
+	document.getElementById('divMessages').style.display = 'none';
 	updateTallyInfo();
 }
 
@@ -146,16 +147,16 @@ function ProcessTallyData() {
 		}
 	}
 	if ((mode_preview) && (!mode_program)) {
-		//preview mode, color it green
-		document.body.style.backgroundColor = '#00FF00';
+		//preview mode, color it orange
+		document.body.style.backgroundColor = '#FF8C00';
 	}
 	else if ((!mode_preview) && (mode_program)) {
-		//program mode, color it red
-		document.body.style.backgroundColor = '#FF0000';
+		//program mode, color it green
+		document.body.style.backgroundColor = '#006400';
 	}
 	else if ((mode_preview) && (mode_program)) {
-		//both, color it yellow
-		document.body.style.backgroundColor = '#FFCC00';
+		//both, color it blue
+		document.body.style.backgroundColor = '#1A3C75';
 	}
 	else {
 		document.body.style.backgroundColor = '#000000';
